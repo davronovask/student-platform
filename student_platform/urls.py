@@ -1,8 +1,8 @@
 from django.contrib import admin
 from django.urls import path
-from core.views import courses_list
+from core.views import course_list
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', courses_list, name='index'),
+    path('', course_list, name='index'),
 ]
