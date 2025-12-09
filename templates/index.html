@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <title>СтудПлатформа — Направления и вход</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+<div class="app">
+  <header>
+    <div class="logo">
+      <div class="logo-dot"></div>
+      <div>СтудПлатформа</div>
+    </div>
+    <nav>
+      <a href="student-dashboard.html">Войти как студент</a>
+      <a href="teacher-dashboard.html">Войти как преподаватель</a>
+    </nav>
+  </header>
+
+  <main class="content">
+    <div class="page-header">
+      <div>
+        <h1>Направления 1 курса</h1>
+        <div class="card-subtitle">Каждый предмет оформлен в своей концепции и цвете.</div>
+      </div>
+      <span class="chip">Концептуальный дизайн по предметам</span>
+    </div>
+
+    <div class="cards-grid">
+      {% for course in courses %}
+      <div class="card">
+        <div class="card-header">
+          <div class="card-title">
+            <div class="subject-icon">{{ course.concept.icon }}</div>
+            <div>{{ course.concept.name }}</div>
+          </div>
+          <span class="pill">{{ course.subtitle }}</span>
+        </div>
+        <div class="card-subtitle">
+          {{ course.description }}
+        </div>
+        {% if course.is_active %}
+          <a class="btn btn-primary" href="student-course.html">{{ course.button_text }}</a>
+        {% else %}
+          <a class="btn btn-ghost" href="#">{{ course.button_text }}</a>
+        {% endif %}
+      </div>
+      {% endfor %}
+    </div>
+
+    <div class="card">
+      <div class="card-header">
+        <div class="card-title">Как читать концепцию по цветам и иконкам</div>
+      </div>
+      <div class="card-subtitle">
+        {% for concept in concepts %}
+          {{ concept.icon }} {{ concept.color }} — {{ concept.description }} ({{ concept.name }})<br>
+        {% endfor %}
+      </div>
+    </div>
+  </main>
+</div>
+</body>
+</html>
